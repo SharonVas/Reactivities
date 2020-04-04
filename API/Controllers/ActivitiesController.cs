@@ -9,10 +9,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActivitiesControler : ControllerBase
+    public class ActivitiesController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ActivitiesControler(IMediator mediator)
+        public ActivitiesController(IMediator mediator)
         {
             _mediator = mediator;
         }
