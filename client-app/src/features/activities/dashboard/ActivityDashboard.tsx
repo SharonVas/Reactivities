@@ -1,20 +1,25 @@
 import React from 'react'
 import { Grid, List } from 'semantic-ui-react'
 import { IActivity } from '../../../app/models/activity'
+import ActivityList from './ActivityList'
+import { ActivityDetails } from '../details/ActivityDetails'
+import { ActivityForm } from '../form/ActivityForm'
 
-interface Iprops{
-    activities: IActivity[]
+interface Iprops {
+    activities: IActivity[];
+    selectActivity: (id: string) => void;
+    selectedActivity: IActivity | null;
 }
 
-const ActivityDashboard: React.FC<Iprops> = ({activities}) => {
+const ActivityDashboard: React.FC<Iprops> = ({ activities, selectActivity, selectedActivity }) => {
     return (
         <Grid>
             <Grid.Column width={10}>
-            <List>
-                {activities.map(activity=> (
-                <List.Item key={activity.id}>{activity.title}</List.Item>
-                ))}
-            </List>
+                <ActivityList activities={activities} selectActivity={selectActivity} />
+            </Grid.Column>
+            <Grid.Column width={6}>
+                {selectedActivity && <ActivityDetails activity={selectedActivity} />}
+                <ActivityForm />
             </Grid.Column>
         </Grid>
     );
