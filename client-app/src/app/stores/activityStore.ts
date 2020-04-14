@@ -19,7 +19,6 @@ export default class ActivityStore {
     @observable target = '';
 
     @computed get activitiesByDate() {
-        console.log(this.groupActivitiesByDate(Array.from(this.activityRegistry.values())));
         return this.groupActivitiesByDate(Array.from(this.activityRegistry.values()));
     };
 
@@ -29,6 +28,7 @@ export default class ActivityStore {
         );
         return Object.entries(sortedActivities.reduce((activities, activity) => {
             const date = activity.date.toISOString().split('T')[0];
+            //const date = activity.date.toISOString().split('T')[0];
             activities[date] = activities[date] ? [...activities[date], activity] : [activity];
             return activities;
         }, {} as { [key: string]: IActivity[] }));

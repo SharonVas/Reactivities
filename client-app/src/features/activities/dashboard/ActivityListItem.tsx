@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { IActivity } from '../../../app/models/activity';
 import {format} from 'date-fns';
 
-
-export const ActivityListItem: React.FC<{ activity: IActivity }> = ({ activity }) => {
+const ActivityListItem: React.FC<{ activity: IActivity }> = ({ activity }) => {
     return (
         <Segment.Group>
             <Segment>
@@ -41,3 +40,5 @@ export const ActivityListItem: React.FC<{ activity: IActivity }> = ({ activity }
 
     )
 }
+
+export default ActivityListItem;

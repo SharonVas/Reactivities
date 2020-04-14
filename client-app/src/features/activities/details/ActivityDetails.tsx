@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from 'react'
 import { Grid } from 'semantic-ui-react'
-import ActivityStore from '../../../app/stores/activityStore'
 import { observer } from 'mobx-react-lite';
 import { RouteComponentProps } from 'react-router-dom';
 import { LoadingComponents } from '../../../app/layouts/LoadingComponents';
 import ActivityDetailedHeader from './ActivityDetailedHeader';
 import { ActivityDetailedInfo } from './ActivityDetailedInfo';
 import { ActivityDetailedChat } from './ActivityDetailedChat';
-import { ActivityDetailedSidebar } from './ActivityDetailedSidebar';
+import ActivityDetailedSidebar from './ActivityDetailedSidebar';
 import { RootStoreContext } from '../../../app/stores/rootStore';
 
 interface DetailParams {
