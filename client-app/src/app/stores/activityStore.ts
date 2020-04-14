@@ -98,7 +98,6 @@ export default class ActivityStore {
             }); 
             history.push(`/activities/${activity.id}`);
         } catch (error) {
-            //await agent.Activities.create(activity);
             runInAction('create activity error', () => {
                 this.submitting = false;
             });
