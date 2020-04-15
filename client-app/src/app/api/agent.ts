@@ -6,11 +6,11 @@ import { IUser, IUserFormValues } from '../models/user';
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
-axios.interceptors.request.use((config)=>{
-    const token= window.localStorage.getItem('jwt');
-    if(token) config.headers.Authorization =`Bearer ${token}`;
+axios.interceptors.request.use((config) => {
+    const token = window.localStorage.getItem('jwt');
+    if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
-}, error=>{
+}, error => {
     return Promise.reject(error);
 })
 
@@ -52,7 +52,9 @@ const Activities = {
     details: (id: string) => request.get(`/activities/${id}`),
     create: (activity: IActivity) => request.post('/activities', activity),
     update: (activity: IActivity) => request.put(`/activities/${activity.id}`, activity),
-    delete: (id: string) => request.delete(`/activities/${id}`)
+    delete: (id: string) => request.delete(`/activities/${id}`),
+    attend: (id: string) => request.post(`/activities/${id}/attend`, {}),
+    unattend: (id: string) => request.delete(`/activities/${id}/attend`)
 }
 
 const User = {
