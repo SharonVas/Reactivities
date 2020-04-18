@@ -67,9 +67,9 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({ match, hist
 
 
     return (
-        <Grid>
-            <Grid.Column width={10}>
-                <Segment clearing>
+        <Grid container columns={1} stackable>
+            <Grid.Column width={10} style={{marginRight: "auto",marginLeft:"auto"}}>
+                <Segment clearing >
                     <FinalForm
                         validate={validate}
                         initialValues={activity}
