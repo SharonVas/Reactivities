@@ -1,8 +1,9 @@
 import { RootStore } from "./rootStore";
 import { observable, runInAction, action, computed } from "mobx";
-import { IProfile, IPhoto } from "../models/profile";
+import { IProfile, IPhoto, IProfileFormValues } from "../models/profile";
 import agent from "../api/agent";
 import { toast } from "react-toastify";
+import { IUser } from "../models/user";
 
 export default class ProfileStore {
     rootStore: RootStore
@@ -14,6 +15,7 @@ export default class ProfileStore {
     @observable loadingProfile = true;
     @observable uploadingPhoto = false;
     @observable loading = false;
+    @observable currentUser= this.rootStore.userStore.user;
 
     @computed get isCurrentUser() {
         if (this.rootStore.userStore.user && this.profile) {
@@ -98,5 +100,22 @@ export default class ProfileStore {
                 this.loading = false;
             })
         }
+    }
+
+    @action editProfile = async (values:IProfileFormValues) => {
+        this.loading = true;
+        try {
+            await agent.Profiles.updateProfile(values);
+            runInAction(() => {
+                this.loading = false;
+            })
+
+        } catch (error) {
+            toast.error('Problem editing the profile')
+            runInAction(() => {
+                this.loading = false;
+            })
+        }
+
     }
 }
