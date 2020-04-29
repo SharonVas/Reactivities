@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Menu, Container, Button, Dropdown, Image } from 'semantic-ui-react'
+import { Menu, Container, Button, Dropdown, Image, Label } from 'semantic-ui-react'
 import { observer } from 'mobx-react-lite';
 import { NavLink, Link } from 'react-router-dom';
 import { RootStoreContext } from '../../app/stores/rootStore';
@@ -9,8 +9,9 @@ const NavBar: React.FC = () => {
     const { user, logout } = rootStore.userStore;
 
     return (
-        <Menu fixed='top' inverted>
-            <Container>
+        <Menu fixed='top' inverted style={{position: 'relative',
+        width: '100%'}}>
+            <Container >
                 <Menu.Item header as={NavLink} exact to='/'>
                     <img src="/assets/logo.png" alt="logo" style={{ marginRight: '10px' }} />
                     Reactivities
@@ -21,7 +22,12 @@ const NavBar: React.FC = () => {
                 </Menu.Item>
                 {user &&
                     <Menu.Item position='right'>
-                        <Image avatar spaced='right' src={user.image || '/assets/user.png'} />
+                        <Menu.Item as='a'>
+                            <Image avatar spaced='right' src={user.image || '/assets/user.png'} />
+                                <Label color='red' floating style={{ position: 'absolute', zIndex: '100', top: '0em', left: '80%', margin: '0 0 0 -1.5em!important' }}>
+                                    22
+                                </Label>
+                        </Menu.Item>
                         <Dropdown pointing='top left' text={user.displayName}>
                             <Dropdown.Menu>
                                 <Dropdown.Item as={Link} to={`/profile/${user.username}`} text='My profile' icon='user' />

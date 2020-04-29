@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { LoadingComponents } from '../../../app/layouts/LoadingComponents';
 import ActivityDetailedHeader from './ActivityDetailedHeader';
 import { ActivityDetailedInfo } from './ActivityDetailedInfo';
-import { ActivityDetailedChat } from './ActivityDetailedChat';
+import  ActivityDetailedChat from './ActivityDetailedChat';
 import ActivityDetailedSidebar from './ActivityDetailedSidebar';
 import { RootStoreContext } from '../../../app/stores/rootStore';
 
